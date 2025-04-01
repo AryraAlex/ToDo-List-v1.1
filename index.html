@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="./styles/css/main.css" />
+    <script src="./scripts/main.js" type="module" defer></script>
+    <title>ToDo задачи</title>
+  </head>
+  <body>
+    <section class="container">
+      <header class="margin-bottom">
+        <h1 class="title">Todo Task Application</h1>
+      </header>
+
+      <div class="input-area margin-bottom">
+        <span class="title">Add A New Task</span>
+        <form class="input-area__form">
+          <input
+            class="input-area__task"
+            type="text"
+            name="text"
+            placeholder="Add a new task..."
+            required
+          />
+          <input
+            class="input-area__button button"
+            type="submit"
+            value="Add A Task"
+            title="Добавить новую задачу"
+            aria-label="Добавить новую задачу"
+          />
+        </form>
+      </div>
+
+      <div class="task-area margin-bottom">
+        <span class="task-area__title title">Task List:</span>
+        <ul class="list">
+          <li class="task-area__task-empty">
+            <span class="task-area__text title">
+              The Task List Is Empty
+            </span>
+            <button
+              class="task-area__icon-button"
+              type="button"
+              title="Добавить новую задачу"
+              aria-label="Добавить новую задачу"
+            >
+              <img
+                class="task-area__icon"
+                src="./assets/svg/task-list.svg"
+                alt="Add a new task"
+                width="84"
+                height="84"
+                loading="lazy"
+              />
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="filter-area">
+        <button
+          class="filter-area__button button filter-area__button--active"
+          type="button"
+          title="Все задачи"
+          aria-label="Все задачи"
+          data-action="all"
+        >
+          All Task
+        </button>
+        <button
+          class="filter-area__button button"
+          type="button"
+          title="Активные задачи"
+          aria-label="Активные задачи"
+          data-action="active"
+        >
+          Active Task
+        </button>
+        <button
+          class="filter-area__button button"
+          type="button"
+          title="Выполненные задачи"
+          aria-label="Выполненные задачи"
+          data-action="completed"
+        >
+          Completed Task
+        </button>
+      </div>
+    </section>
+  </body>
+</html>

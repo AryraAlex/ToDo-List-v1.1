@@ -1,0 +1,26 @@
+@use '../helpers/' as *;
+
+.filter-area {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  &__button {
+    border-radius: $border-radius;
+    padding: rem(8) rem(12);
+    transition-duration: $transition;
+
+    &:hover {
+      transform: $scale-hover;
+    }
+
+    &:active {
+      transform: $scale-click;
+    }
+  }
+}
+
+.filter-area__button--active {
+  background-color: $color-hover;
+  border-radius: 5px;
+}

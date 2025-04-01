@@ -1,0 +1,38 @@
+@use '../helpers/' as *;
+
+body {
+  font-family: "Karla", sans-serif;
+  font-size: var(--fontSize);
+  background-color: $color-bg-page;
+}
+
+section {
+  background-color: $color-bg-app;
+  border-radius: $border-radius;
+  padding: calc(var(--spacing) * 2);
+  box-shadow: 0px 10px 30px $color-box-shadow;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  color: $color-main;
+  font-size: fluid(42, 24);
+  font-weight: 600;
+}
+
+.button {
+  background-color: $color-main;
+  color: $color-white;
+  border: none;
+  transition-duration: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &:active {
+    transform: $scale-click;
+  }
+}

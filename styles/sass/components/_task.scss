@@ -1,0 +1,69 @@
+@use '../helpers/' as *;
+
+.task-area {
+  &__title {
+    background-color: $color-bg-text;
+    margin-bottom: calc(var(--spacing)*2);
+  }
+
+  &__task-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition-duration: $transition;
+    cursor: pointer;
+
+    &:hover {
+      transform: $scale-hover;
+    }
+  }
+
+  .list {
+    &__item {
+      display: flex;
+      align-items: flex-end;
+      gap: rem(10);
+      margin-bottom: calc(var(--spacing)*2);
+    }
+
+    &__item-name {
+      flex: 1;
+      border-bottom: $border-bottom;
+    }
+
+    &__button {
+      position: relative;
+      padding: 0;
+      background-color: transparent;
+
+      &:hover {
+        transform: $scale-hover;
+      }
+    }
+
+    &__item-icon {
+      pointer-events: none;
+      transition-duration: $transition;
+    }
+
+    .checkmark {
+      position: absolute;
+      left: 2px;
+      top: 5px;
+    }
+  }
+}
+
+.checkbox {
+  border: 4px solid $color-main;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}

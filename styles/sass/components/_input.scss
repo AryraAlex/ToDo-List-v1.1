@@ -1,0 +1,25 @@
+@use '../helpers/' as *;
+
+.input-area {
+  &__form {
+    display: flex;
+  }
+
+  &__task {
+    flex: 1;
+    padding: rem(10) rem(20);
+    border: $border;
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
+    transition-duration: $transition;
+
+    &:focus, &:focus-visible {
+      outline: none;
+      border-color: $color-hover;
+    }
+  }
+
+  &__button {
+    border-radius: 0 6px 6px 0;
+  }
+}
