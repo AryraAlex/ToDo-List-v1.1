@@ -237,6 +237,7 @@ svg * {
 
 .done {
   opacity: 0.2;
+  pointer-events: none;
 }
 
 header {
@@ -248,18 +249,31 @@ header {
   display: flex;
 }
 .input-area__task {
-  flex: 1;
   padding: 0.625rem 1.25rem;
+  border-right: none;
+}
+.input-area__button {
+  border-radius: 0 6px 6px 0;
+}
+
+.input-section {
+  flex: 1;
   border: 2px solid #8052ec;
   border-radius: 6px 0 0 6px;
   background-color: transparent;
   transition-duration: 0.3s;
 }
-.input-area__task:focus, .input-area__task:focus-visible {
+.input-section:focus, .input-section:focus-visible {
   outline: none;
   border-color: #d888f1;
 }
-.input-area__button {
+
+.input-area__edit-task {
+  padding: 0.3125rem 1.25rem;
+}
+
+.input-area__save-button {
+  padding: 7px 20px;
   border-radius: 0 6px 6px 0;
 }
 
@@ -282,6 +296,9 @@ header {
 }
 .task-area__icon-button:hover {
   transform: scale(1.05);
+}
+.task-area__icon-button:active {
+  transform: scale(0.9);
 }
 .task-area .list__item {
   display: flex;

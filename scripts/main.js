@@ -1,13 +1,10 @@
 import { initAddNewTask } from './module/add-task.js'
-import { initTaskListEmpty } from './module/task-list-empty.js'
-import { initCompletedTask } from './module/button-completed-task.js'
-import { initDeleteTask } from './module/button-delete-task.js'
+import { initTaskButtons } from './module/task-buttons.js'
+import { initClickIconEmptyList } from './module/task-list-empty.js'
 import { initFilters } from './module/buttons-filter.js'
 
 
 initAddNewTask()
-initTaskListEmpty()
-initCompletedTask()
-initDeleteTask()
+initTaskButtons()
+initClickIconEmptyList()
 initFilters()
-

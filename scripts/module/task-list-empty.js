@@ -1,18 +1,16 @@
-import { constants } from '../const.js'
+import { SELECTORS, CLASSES } from '../const.js'
 
-export function initTaskListEmpty() {
-  // Клик по иконки дает фокус на поле ввода
-  constants.buttonFocusInput.addEventListener('click', () => {
-    constants.inputArea.focus()
+
+export function initClickIconEmptyList() {
+  SELECTORS.iconEmptyList.addEventListener('click', () => {
+    SELECTORS.inputArea.focus()
   })
-
-  hiddenEmptyList()
 }
 
-export function hiddenEmptyList() {
-  if (constants.taskList.children.length > 1) {
-    constants.emptyList.classList.add('visually-hidden')
-  } else {
-    constants.emptyList.classList.remove('visually-hidden')
+export function EmptyList() {
+  if (SELECTORS.taskList.children.length > 1) {
+    SELECTORS.emptyList.style.display = 'none'
+  } else if (SELECTORS.taskList.children.length === 1) {
+    SELECTORS.emptyList.style.display = 'flex'
   }
 }

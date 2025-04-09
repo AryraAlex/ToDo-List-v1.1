@@ -17,12 +17,13 @@
       </header>
 
       <div class="input-area margin-bottom">
-        <span class="title">Add A New Task</span>
+        <label class="title" for="new-task">Add A New Task</label>
         <form class="input-area__form">
           <input
-            class="input-area__task"
+            class="input-area__task input-section"
             type="text"
             name="text"
+            id="new-task"
             placeholder="Add a new task..."
             required
           />
@@ -31,7 +32,6 @@
             type="submit"
             value="Add A Task"
             title="Добавить новую задачу"
-            aria-label="Добавить новую задачу"
           />
         </form>
       </div>
@@ -62,12 +62,13 @@
         </ul>
       </div>
 
+      
+
       <div class="filter-area">
         <button
           class="filter-area__button button filter-area__button--active"
           type="button"
           title="Все задачи"
-          aria-label="Все задачи"
           data-action="all"
         >
           All Task
@@ -76,7 +77,6 @@
           class="filter-area__button button"
           type="button"
           title="Активные задачи"
-          aria-label="Активные задачи"
           data-action="active"
         >
           Active Task
@@ -85,7 +85,6 @@
           class="filter-area__button button"
           type="button"
           title="Выполненные задачи"
-          aria-label="Выполненные задачи"
           data-action="completed"
         >
           Completed Task

@@ -1,61 +1,131 @@
-import { constants } from '../const.js'
-import { hiddenEmptyList } from './task-list-empty.js'
+import { SELECTORS, CLASSES } from '../const.js'
+import { EmptyList } from './task-list-empty.js'
 
 export function initAddNewTask() {
-  constants.formInput.addEventListener('submit', addNewTask)
+  SELECTORS.formInput.addEventListener('submit', addNewTask)
 }
 
 function addNewTask(event) {
-  // Отмена стандартного поведения браузера при отправлении (submit)
   event.preventDefault()
 
-  // Создание нового элемента в DOM дерево
-  const input = constants.inputArea.value // В этой переменной записывается содержимое поля ввода
-  // В переменной taskHTML хранится разметка элемента, который и будет генерироваться при добавлении новой задачи
-  const taskHTML = `
-          <li class="list__item">
-            <span class="list__item-name task-item">${input}</span>
-            <button
-              class="list__button button checkbox"
-              type="button"
-              data-action="done"
-            >
-              <img
-                class="list__item-icon checkmark visually-hidden"
-                src="./assets/svg/checkmark.svg"
-                alt="done task"
-                title="Задача выполнена"
-                aria-label="Задача выполнена"
-                width="28"
-                height="28"
-              />
-            </button>
-            <button
-              class="list__button button"
-              type="button"
-              data-action="delete"
-            >
-              <img
-                class="list__item-icon"
-                src="./assets/svg/trash-bin.svg"
-                alt="trash bin"
-                title="Удалить задачу"
-                aria-label="Удалить задачу"
-                width="39"
-                height="39"
-              />
-            </button>
-          </li>
-  `
+  const taskTextContent = SELECTORS.inputArea.value.trim()
+  if (taskTextContent === '') {
+    return
+  }
 
-  // С помощью этого метода происходит генерация элемента.
-  // Первый параметр указывает на позицию генерации, а вторым передается содержимое
-  constants.taskList.insertAdjacentHTML('beforeend', taskHTML)
+  // Элемент li
+  const newTask = document.createElement('li')
+  newTask.className = CLASSES.task
 
-  // Очистка поля ввода и сохранение фокуса на нем
-  constants.inputArea.value = ''
-  constants.inputArea.focus()
+  // Текст задачи
+  const taskText = document.createElement('span')
+  taskText.className = CLASSES.taskSpan
+  taskText.textContent = taskTextContent
 
-  // Проверка, пустой ли список задач
-  hiddenEmptyList()
+  newTask.appendChild(taskText) // span
+
+  // Кнопка завершения задачи
+  const completeTaskButton = document.createElement('button')
+  completeTaskButton.className = CLASSES.completeTaskButton
+  completeTaskButton.type = 'button'
+  completeTaskButton.setAttribute('data-action', 'done')
+  completeTaskButton.title = 'Завершить задачу'
+  completeTaskButton.ariaLabel = 'Завершить задачу'
+
+  newTask.appendChild(completeTaskButton) // button
+
+  // Иконка галочки
+  const checkmarkCompleted = document.createElement('img')
+  checkmarkCompleted.className = CLASSES.checkmarkCompleted
+  checkmarkCompleted.src = './assets/svg/checkmark.svg'
+  checkmarkCompleted.alt = 'complete task'
+  checkmarkCompleted.width = '28'
+  checkmarkCompleted.height = '28'
+
+  completeTaskButton.appendChild(checkmarkCompleted) // icon checkmark
+
+  // Кнопка редактирования
+  const editTaskButton = document.createElement('button')
+  editTaskButton.className = CLASSES.TaskButton
+  editTaskButton.type = 'button'
+  editTaskButton.dataset.action = 'edit'
+  editTaskButton.title = 'Редактировать задачу'
+  editTaskButton.ariaLabel = 'Редактировать задачу'
+
+  newTask.appendChild(editTaskButton) // button
+
+  const saveEditButton = document.createElement('button')
+  saveEditButton.className = 'input-area__save-button button'
+  saveEditButton.type = 'button'
+  saveEditButton.innerText = 'Done'
+
+  editTaskButton.addEventListener('click', () => {
+    const editTaskInput = document.createElement('input')
+    editTaskInput.className =
+      'input-area__edit-task input-section'
+    editTaskInput.type = 'text'
+    editTaskInput.name = 'editTask'
+    editTaskInput.value = taskText.textContent
+    newTask.replaceChild(editTaskInput, taskText)
+
+    completeTaskButton.style.display = 'none'
+    editTaskButton.style.display = 'none'
+    deleteTaskButton.style.display = 'none'
+
+    saveEditButton.addEventListener('click', () => {
+      const updateTaskText = editTaskInput.value.trim()
+      taskText.textContent = updateTaskText
+      newTask.replaceChild(taskText, editTaskInput)
+      newTask.removeChild(saveEditButton)
+
+      completeTaskButton.style.display = 'flex'
+      editTaskButton.style.display = 'flex'
+      deleteTaskButton.style.display = 'flex'
+    })
+    newTask.appendChild(saveEditButton)
+    editTaskInput.focus()
+  })
+
+  // Иконка редактирования задач
+  const iconEditTaskButton = document.createElement('img')
+  iconEditTaskButton.className = CLASSES.iconTaskButtons
+  iconEditTaskButton.src = './assets/svg/edit-task-icon.svg'
+  iconEditTaskButton.alt = 'ícon edit task'
+  iconEditTaskButton.width = '41'
+  iconEditTaskButton.height = '41'
+
+  editTaskButton.appendChild(iconEditTaskButton) // icon edit task
+
+  // Кнопка удаления
+  const deleteTaskButton = document.createElement('button')
+  deleteTaskButton.className = CLASSES.TaskButton
+  deleteTaskButton.type = 'button'
+  deleteTaskButton.dataset.action = 'delete'
+  deleteTaskButton.title = 'Удалить задачу'
+  deleteTaskButton.ariaLabel = 'Удалить задачу'
+
+  newTask.appendChild(deleteTaskButton) // button
+
+  // Иконка мусорного бака
+  const trashBinIcon = document.createElement('img')
+  trashBinIcon.className = CLASSES.iconTaskButtons
+  trashBinIcon.src = './assets/svg/trash-bin.svg'
+  trashBinIcon.alt = 'trash bin'
+  trashBinIcon.width = '39'
+  trashBinIcon.height = '39'
+
+  deleteTaskButton.appendChild(trashBinIcon) // icon trash bin
+
+  SELECTORS.taskList.appendChild(newTask) // li
+
+  // Новые задачи в начало списка
+  SELECTORS.taskList.insertBefore(
+    newTask,
+    SELECTORS.taskList.firstChild
+  )
+
+  SELECTORS.inputArea.value = ''
+  SELECTORS.inputArea.focus()
+
+  EmptyList()
 }
