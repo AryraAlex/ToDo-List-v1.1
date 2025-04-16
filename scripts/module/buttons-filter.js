@@ -10,9 +10,11 @@ export function initFilters() {
       const tasks = Array.from(SELECTORS.taskList.children)
 
       if (event.target.dataset.action === 'all') {
-        tasks.forEach(task => {task.classList.remove(CLASSES.visuallyHidden)})
+        tasks.forEach((task) => {
+          task.classList.remove(CLASSES.visuallyHidden)
+        })
       } else if (event.target.dataset.action === 'active') {
-        tasks.forEach(task => {
+        tasks.forEach((task) => {
           if (task.classList.contains(CLASSES.completed)) {
             task.classList.add(CLASSES.visuallyHidden)
           } else {
@@ -20,7 +22,7 @@ export function initFilters() {
           }
         })
       } else if (event.target.dataset.action === 'completed') {
-        tasks.forEach(task => {
+        tasks.forEach((task) => {
           if (task.classList.contains(CLASSES.completed)) {
             task.classList.remove(CLASSES.visuallyHidden)
           } else {
@@ -33,5 +35,7 @@ export function initFilters() {
 }
 
 function removeActiveClass() {
-  SELECTORS.filterButtons.forEach(filter => {filter.classList.remove(CLASSES.filterActive)})
+  SELECTORS.filterButtons.forEach((filter) => {
+    filter.classList.remove(CLASSES.filterActive)
+  })
 }

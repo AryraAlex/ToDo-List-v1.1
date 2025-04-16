@@ -355,4 +355,13 @@ header {
 .filter-area__button--active {
   background-color: #d888f1;
   border-radius: 5px;
+}
+
+.pagination {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  gap: 1rem;
 }/*# sourceMappingURL=main.css.map */

@@ -1,11 +1,42 @@
 import { SELECTORS, CLASSES } from '../const.js'
+import { items } from '../const.js'
+import {
+  currentPage,
+  itemsPerPage,
+  updatePagination,
+} from './pagination.js'
 import { EmptyList } from './task-list-empty.js'
 
-export function initAddNewTask() {
-  SELECTORS.formInput.addEventListener('submit', addNewTask)
+export function updateItemList() {
+  SELECTORS.taskList.innerHTML = ''
+
+  const itemsOnPage = items.slice(
+    itemsPerPage * (currentPage - 1),
+    itemsPerPage * currentPage
+  )
+
+  itemsOnPage.forEach((item) => {
+    SELECTORS.taskList.appendChild(item)
+  })
+
+  updatePagination()
+  EmptyList()
 }
 
-function addNewTask(event) {
+export function initAddNewTask() {
+  SELECTORS.formInput.addEventListener('submit', (event) => {
+    const newTask = createNewTask(event)
+
+    addNewTask(newTask)
+  })
+}
+
+function addNewTask(newTask) {
+  items.push(newTask)
+  updateItemList()
+}
+
+function createNewTask(event) {
   event.preventDefault()
 
   const taskTextContent = SELECTORS.inputArea.value.trim()
@@ -116,16 +147,9 @@ function addNewTask(event) {
 
   deleteTaskButton.appendChild(trashBinIcon) // icon trash bin
 
-  SELECTORS.taskList.appendChild(newTask) // li
-
-  // Новые задачи в начало списка
-  SELECTORS.taskList.insertBefore(
-    newTask,
-    SELECTORS.taskList.firstChild
-  )
+  newTask.dataset.taskId = crypto.randomUUID()
 
   SELECTORS.inputArea.value = ''
-  SELECTORS.inputArea.focus()
 
-  EmptyList()
+  return newTask
 }

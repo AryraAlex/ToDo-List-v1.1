@@ -17,7 +17,9 @@
       </header>
 
       <div class="input-area margin-bottom">
-        <label class="title" for="new-task">Add A New Task</label>
+        <label class="title" for="new-task">
+          Add A New Task
+        </label>
         <form class="input-area__form">
           <input
             class="input-area__task input-section"
@@ -62,8 +64,6 @@
         </ul>
       </div>
 
-      
-
       <div class="filter-area">
         <button
           class="filter-area__button button filter-area__button--active"
@@ -88,6 +88,24 @@
           data-action="completed"
         >
           Completed Task
+        </button>
+      </div>
+
+      <div class="pagination">
+        <button
+          type="button"
+          class="pagination__button button"
+          id="pagination-prev"
+        >
+          Назад
+        </button>
+        <span class="pagination__page"></span>
+        <button
+          type="button"
+          class="pagination__button button"
+          id="pagination-next"
+        >
+          Вперед
         </button>
       </div>
     </section>

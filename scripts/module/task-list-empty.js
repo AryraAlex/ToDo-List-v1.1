@@ -1,5 +1,5 @@
 import { SELECTORS, CLASSES } from '../const.js'
-
+import { items } from '../const.js'
 
 export function initClickIconEmptyList() {
   SELECTORS.iconEmptyList.addEventListener('click', () => {
@@ -8,9 +8,9 @@ export function initClickIconEmptyList() {
 }
 
 export function EmptyList() {
-  if (SELECTORS.taskList.children.length > 1) {
+  if (items.length > 1) {
     SELECTORS.emptyList.style.display = 'none'
-  } else if (SELECTORS.taskList.children.length === 1) {
+  } else {
     SELECTORS.emptyList.style.display = 'flex'
   }
 }
