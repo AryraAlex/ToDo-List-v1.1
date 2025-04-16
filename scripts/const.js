@@ -8,9 +8,12 @@ export const SELECTORS = {
 
   emptyList: document.querySelector('.task-area__task-empty'),
 
-
-  iconEmptyList: document.querySelector('.task-area__icon-button'),
-  filterButtons: document.querySelectorAll('.filter-area__button'),
+  iconEmptyList: document.querySelector(
+    '.task-area__icon-button'
+  ),
+  filterButtons: document.querySelectorAll(
+    '.filter-area__button'
+  ),
 }
 
 export const CLASSES = {
@@ -18,7 +21,8 @@ export const CLASSES = {
   taskSpan: 'list__item-name task-item',
 
   completeTaskButton: 'list__button button checkbox',
-  checkmarkCompleted: 'list__item-icon checkmark visually-hidden',
+  checkmarkCompleted:
+    'list__item-icon checkmark visually-hidden',
   TaskButton: 'list__button button',
   iconTaskButtons: 'list__item-icon',
   filterActive: 'filter-area__button--active',
@@ -26,3 +30,5 @@ export const CLASSES = {
   completed: 'comleted',
   visuallyHidden: 'visually-hidden',
 }
+
+export const items = []

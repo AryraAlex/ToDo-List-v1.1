@@ -1,10 +1,11 @@
 import { SELECTORS, CLASSES } from '../const.js'
+import { items } from '../const.js'
+import { updateItemList } from './add-task.js'
 import { EmptyList } from './task-list-empty.js'
 
 export function initTaskButtons() {
   SELECTORS.taskList.addEventListener('click', (event) => {
     clickTaskButtons(event)
-    
   })
 }
 
@@ -19,8 +20,10 @@ function clickTaskButtons(event) {
     taskText.classList.toggle('done')
     checkmark.classList.toggle(CLASSES.visuallyHidden)
   } else if (event.target.dataset.action === 'delete') {
-    parentNode.remove()
-    EmptyList()
+    const id = event.target.dataset.taskId
+
+    items.splice((item) => item.dataset.taskId !== id, 1)
+
+    updateItemList()
   }
-  
 }
