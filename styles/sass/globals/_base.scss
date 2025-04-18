@@ -3,14 +3,16 @@
 body {
   font-family: "Karla", sans-serif;
   font-size: var(--fontSize);
-  background-color: $color-bg-page;
+  background-color: var(--color-background-page);
+  color: var(--color-text);
 }
 
 section {
-  background-color: $color-bg-app;
+  background-color: var(--color-background-app);
   border-radius: $border-radius;
   padding: calc(var(--spacing) * 2);
-  box-shadow: 0px 10px 30px $color-box-shadow;
+  box-shadow: 0px 10px 30px var(--color-box-shadow);
+  transition-duration: $transition;
 }
 
 .title {
@@ -19,6 +21,9 @@ section {
   color: $color-main;
   font-size: fluid(42, 24);
   font-weight: 600;
+}
+.main-title {
+  background-color: var(--color-background-titles);
 }
 
 .button {

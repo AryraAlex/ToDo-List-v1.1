@@ -1,10 +1,6 @@
 $color-main: #8052ec;
 $color-hover: #d888f1;
 $color-white: #fff;
-$color-bg-page: #f0f0f0;
-$color-bg-app: #fff;
-$color-bg-text: #f3f2ff;
-$color-box-shadow: #c0c0c0;
 
 $border: 2px solid $color-main;
 $border-radius: 1rem;
@@ -18,4 +14,23 @@ $scale-hover: scale(1.05);
 :root {
   --spacing: 1rem;
   --fontSize: 18px;
+}
+
+// Светлая тема
+[data-theme="white"] {
+  --color-background-page: #f0f0f0;
+  --color-background-app: #fff;
+  --color-background-titles: #f3f2ff;
+  --color-box-shadow: #c0c0c0;
+  --color-text: black;
+  --color-input-text: black;
+}
+
+[data-theme="dark"] {
+  --color-background-page: #2e2e39;
+  --color-background-app: #201f29;
+  --color-background-titles: #282639;
+  --color-box-shadow: #29263c;
+  --color-text: white;
+  --color-input-text: white;
 }

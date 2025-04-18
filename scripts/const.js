@@ -8,9 +8,16 @@ export const SELECTORS = {
 
   emptyList: document.querySelector('.task-area__task-empty'),
 
-
   iconEmptyList: document.querySelector('.task-area__icon-button'),
   filterButtons: document.querySelectorAll('.filter-area__button'),
+
+  changeThemeButton: document.querySelector('.theme-toggle'),
+
+  prevButtonPag: document.getElementById('prev-page'),
+  nextButtonPag: document.getElementById('next-page'),
+  paginationButtons: document.querySelectorAll('.pagination-area__button'),
+  numberPagPage: document.querySelector('.pagination-area__info'),
+  paginationNumbersPage: document.querySelector('.pagination-area__info'),
 }
 
 export const CLASSES = {

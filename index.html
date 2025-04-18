@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="white">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -12,12 +12,14 @@
   </head>
   <body>
     <section class="container">
-      <header class="margin-bottom">
+      <header class="margin-bottom main-title">
         <h1 class="title">Todo Task Application</h1>
       </header>
 
       <div class="input-area margin-bottom">
-        <label class="title" for="new-task">Add A New Task</label>
+        <label class="title" for="new-task">
+          Add A New Task
+        </label>
         <form class="input-area__form">
           <input
             class="input-area__task input-section"
@@ -37,7 +39,9 @@
       </div>
 
       <div class="task-area margin-bottom">
-        <span class="task-area__title title">Task List:</span>
+        <span class="task-area__title title main-title">
+          Task List:
+        </span>
         <ul class="list">
           <li class="task-area__task-empty">
             <span class="task-area__text title">
@@ -62,7 +66,29 @@
         </ul>
       </div>
 
-      
+      <div class="pagination-area">
+        <button
+          class="pagination-area__button button"
+          type="button"
+          id="prev-page"
+          title="Предыдущая страница"
+          data-pagination="prev"
+        >
+          Previous
+        </button>
+        <span class="pagination-area__info" id="pagination-info">
+          
+        </span>
+        <button
+          class="pagination-area__button button"
+          type="button"
+          id="next-page"
+          title="Следующая страница"
+          data-pagination="next"
+        >
+          Next
+        </button>
+      </div>
 
       <div class="filter-area">
         <button
@@ -88,6 +114,9 @@
           data-action="completed"
         >
           Completed Task
+        </button>
+        <button class="theme-toggle button" type="button">
+          white/dark
         </button>
       </div>
     </section>

@@ -1,10 +1,10 @@
 import { SELECTORS, CLASSES } from '../const.js'
 import { EmptyList } from './task-list-empty.js'
+import { updatePagination } from './pagination.js'
 
 export function initTaskButtons() {
   SELECTORS.taskList.addEventListener('click', (event) => {
     clickTaskButtons(event)
-    
   })
 }
 
@@ -21,6 +21,6 @@ function clickTaskButtons(event) {
   } else if (event.target.dataset.action === 'delete') {
     parentNode.remove()
     EmptyList()
+    updatePagination()
   }
-  
 }
