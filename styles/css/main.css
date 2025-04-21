@@ -378,4 +378,14 @@ header {
 .filter-area__button--active {
   background-color: #d888f1;
   border-radius: 5px;
+}
+
+.pagination-area {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.pagination-area__button {
+  border-radius: 1rem;
 }/*# sourceMappingURL=main.css.map */

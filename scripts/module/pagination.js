@@ -34,8 +34,8 @@ function onClickButtonsPagination() {
   SELECTORS.paginationButtons.forEach((button) => {
     button.addEventListener('click', (buttonTarget) => {
       buttonTarget.target.dataset.pagination === 'prev'
-        ? state.currentPage--
-        : state.currentPage++
+        ? --state.currentPage
+        : ++state.currentPage
       updatePagination()
     })
   })
@@ -57,7 +57,7 @@ function showTasksForCurrentPage() {
   const showTasks = state.currentTasks.slice(start, end)
 
   if (showTasks.length === 0 && state.currentPage > 1) {
-    state.currentPage--
+    --state.currentPage
     updatePagination()
     return
   }
