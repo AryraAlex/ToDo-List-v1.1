@@ -4,6 +4,7 @@ import { initClickIconEmptyList } from './module/task-list-empty.js'
 import { initFilters } from './module/buttons-filter.js'
 import { initChangeTheme } from './module/theme-app.js'
 import { initPagination } from './module/pagination.js'
+import { initCreateDateTask } from './module/date.js'
 
 
 initAddNewTask()
@@ -12,3 +13,4 @@ initClickIconEmptyList()
 initFilters()
 initChangeTheme()
 initPagination()
+initCreateDateTask()

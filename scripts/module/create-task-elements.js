@@ -100,11 +100,76 @@ export function createTaskElements(task) {
 
   deleteTaskButton.appendChild(trashBinIcon) // icon trash bin
 
+  // Дата и время
+  const createDate = new Date()
+  const taskCreationDate = document.createElement('span')
+  taskCreationDate.className = 'task-date'
+  taskCreationDate.textContent = createDate.toLocaleDateString()
+  taskCreationDate.dataset.deadline = 'deadline'
+  taskCreationDate.addEventListener('click', () =>
+    openDeadLinePicker()
+  )
+
+  function openDeadLinePicker() {
+    if (document.querySelector('.deadline__picker')) {
+      return
+    }
+    const deadLinePicker = document.createElement('div')
+    deadLinePicker.className = 'deadline__picker'
+
+    const deadLineInput = document.createElement('input')
+    deadLineInput.type = 'datetime-local'
+    deadLineInput.min = new Date().toISOString().slice(0, 16)
+
+    const saveDeadLineButton = document.createElement('button')
+    saveDeadLineButton.type = 'button'
+    saveDeadLineButton.className = 'deadline-button button'
+    saveDeadLineButton.textContent = 'Save'
+    saveDeadLineButton.addEventListener('click', () => {
+      clickButtonSaveDeadLine(
+        taskCreationDate,
+        deadLineInput,
+        saveDeadLineButton
+      ),
+        deadLinePicker.remove()
+    })
+
+    const closeDeadLineButton = document.createElement('button')
+    closeDeadLineButton.type = 'button'
+    closeDeadLineButton.className = 'deadline-button button'
+    closeDeadLineButton.textContent = 'Close'
+    closeDeadLineButton.addEventListener('click', () => {
+      deadLinePicker.remove()
+    })
+
+    deadLinePicker.append(
+      document.createTextNode('Set deadline: '),
+      deadLineInput,
+      saveDeadLineButton,
+      closeDeadLineButton
+    )
+
+    document.body.appendChild(deadLinePicker)
+  }
+
+  function clickButtonSaveDeadLine(
+    taskCreationDate,
+    deadLineInput,
+  ) {
+    const deadLine = new Date(deadLineInput.value)
+    if (deadLineInput.value === '') {
+      return
+    }
+    
+    taskCreationDate.textContent = `Deadline: ${deadLine.toLocaleDateString()}`
+  }
+
   newTask.append(
     taskText,
     completeTaskButton,
     editTaskButton,
-    deleteTaskButton
+    deleteTaskButton,
+    taskCreationDate
   )
 
   // SELECTORS.taskList.appendChild(newTask) // li

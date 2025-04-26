@@ -5,6 +5,7 @@ body {
   font-size: var(--fontSize);
   background-color: var(--color-background-page);
   color: var(--color-text);
+  transition-duration: $transition;
 }
 
 section {
